@@ -6,6 +6,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.*;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
@@ -14,8 +15,15 @@ import org.apache.http.util.EntityUtils;
 
 public class HttpClientHelper {
 
-    public static <T> T performRequest(HttpRequestType requestType, String uri, Object body, Class<T> responseType, String accessToken) throws Exception {
-        HttpClient httpClient = HttpClientBuilder.create().build();
+    public static <T> Response<T> performRequest(HttpRequestType requestType, String uri, Object body, Class<T> responseType, String accessToken) throws Exception {
+        RequestConfig config = RequestConfig.custom()
+                .setConnectTimeout(60 * 1000)
+                .setConnectionRequestTimeout(60 * 1000)
+                .setSocketTimeout(60 * 1000)
+                .build();
+        HttpClient httpClient = HttpClientBuilder.create()
+                .setDefaultRequestConfig(config)
+                .build();
 
         HttpRequestBase httpRequest;
         switch (requestType) {
@@ -49,25 +57,21 @@ public class HttpClientHelper {
         }
 
         HttpResponse response = httpClient.execute(httpRequest);
-
         String responseBody = EntityUtils.toString(response.getEntity());
-
-        if (responseType == null) {
-            return null;
-        } else if (responseType.equals(String.class)) {
-            return responseType.cast(responseBody);
-        } else {
-            objectMapper.registerModule(new JavaTimeModule());
-            return objectMapper.readValue(responseBody, responseType);
-        }
-    }
-
-    public static <T> T performRequest(HttpRequestType requestType, String uri, Object body, Class<T> responseType) throws Exception {
-        return performRequest(requestType, uri, body, responseType, null);
-    }
-
-    public static boolean isResponseSuccessful(HttpResponse response) {
         int statusCode = response.getStatusLine().getStatusCode();
-        return statusCode >= HttpStatus.SC_OK && statusCode < HttpStatus.SC_MULTIPLE_CHOICES;
+
+        if (statusCode >= HttpStatus.SC_OK && statusCode < HttpStatus.SC_MULTIPLE_CHOICES) {
+            if (responseType.equals(String.class)) {
+                return Response.create(responseType.cast(responseBody), response);
+            } else {
+                objectMapper.registerModule(new JavaTimeModule());
+                return Response.create(objectMapper.readValue(responseBody, responseType), response);
+            }
+        }
+        return Response.create(null, response);
+    }
+
+    public static <T> Response<T> performRequest(HttpRequestType requestType, String uri, Object body, Class<T> responseType) throws Exception {
+        return performRequest(requestType, uri, body, responseType, null);
     }
 }

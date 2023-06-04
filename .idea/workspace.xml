@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="836f68e4-daa0-42d3-9baa-4e13295abae9" name="Changes" comment="" />
+    <list default="true" id="836f68e4-daa0-42d3-9baa-4e13295abae9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/greffnoah/util/http/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/greffnoah/clients/service/ClipboardServiceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/greffnoah/clients/service/ClipboardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/greffnoah/util/http/HttpClientHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/greffnoah/util/http/HttpClientHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/net/greffnoah/definition/ClipboardLookupStepDefinitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/greffnoah/definition/ClipboardLookup.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,9 +22,19 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
     </option>
   </component>
   <component name="ProjectId" id="2QiIlOQdouz492aME4mTjjSoAhE" />
@@ -25,9 +44,13 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/greff/Desktop/uniclip/test-suite",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -74,6 +97,8 @@
       <option name="presentableId" value="Default" />
       <updated>1685830125362</updated>
       <workItem from="1685830126420" duration="3497000" />
+      <workItem from="1685834191538" duration="672000" />
+      <workItem from="1685837096788" duration="1562000" />
     </task>
     <servers />
   </component>
